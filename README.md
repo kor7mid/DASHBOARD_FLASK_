@@ -1,6 +1,6 @@
 ---
 
-# GESTION DES EMPLOYES AVEC FLASJ
+# GESTION DES EMPLOYES AVEC FLASk
 
 Description brève du projet.
 
