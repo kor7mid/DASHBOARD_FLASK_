@@ -1,6 +1,6 @@
 ---
 
-# GESTION DES EMPLOYES AVEC FLASk
+# GESTION DES EMPLOYES AVEC FLASK
 
 Description brève du projet.
 
