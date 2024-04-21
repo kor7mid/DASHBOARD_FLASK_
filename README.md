@@ -1,144 +1,151 @@
-### 👉 Set Up for `Unix`, `MacOS`
+---
 
-> Install modules via `VENV`
+# GESTION DES EMPLOYES AVEC FLASJ
 
-```bash
-$ virtualenv env
-$ source env/bin/activate
-$ pip3 install -r requirements.txt
+Description brève du projet.
+
+## Installation
+
+### Cloner le Dépôt
+
+1. Clonez le dépôt de votre projet depuis GitHub :
+   ```bash
+   $ git clone https://github.com/kor7mid/DASHBOARD_FLASK_.git
+   ```
+
+2. Accédez au répertoire du projet :
+   ```bash
+   $ cd votre-projet
+   ```
+
+### Configuration de l'Environnement
+
+#### Unix / MacOS
+- Installez les modules via `VENV` :
+  ```bash
+  $ virtualenv env
+  $ source env/bin/activate
+  $ pip3 install -r requirements.txt
+  ```
+
+- Configurez l'environnement Flask :
+  ```bash
+  $ export FLASK_APP=run.py
+  $ export FLASK_ENV=development
+  ```
+
+#### Windows
+- Installez les modules via `VENV` (Windows) :
+  ```bash
+  $ virtualenv env
+  $ .\env\Scripts\activate
+  $ pip3 install -r requirements.txt
+  ```
+
+- Configurez l'environnement Flask :
+  - **CMD** :
+    ```bash
+    $ set FLASK_APP=run.py
+    $ set FLASK_ENV=development
+    ```
+  - **Powershell** :
+    ```bash
+    $ $env:FLASK_APP = ".\run.py"
+    $ $env:FLASK_ENV = "development"
+    ```
+
+### Démarrer l'Application
+
+1. Lancez l'application Flask :
+   ```bash
+   $ flask run
+   ```
+
+   L'application sera accessible à l'adresse : `http://127.0.0.1:5000/`
+
+   Pour un serveur HTTPS :
+   ```bash
+   $ flask run --cert=adhoc
+   ```
+
+## Recompilez le SCSS
+
+1. Installez les modules :
+   ```bash
+   $ yarn # installe les modules
+   ```
+
+2. Éditez les variables dans `_variables.scss` pour personnaliser les couleurs :
+   ```scss
+   $default: #344675 !default; // EDIT pour personnalisation
+   $primary: #e14eca !default; // EDIT pour personnalisation
+   $secondary: #f4f5f7 !default; // EDIT pour personnalisation
+   $success: #00f2c3 !default; // EDIT pour personnalisation
+   $info: #1d8cf8 !default; // EDIT pour personnalisation
+   $warning: #ff8d72 !default; // EDIT pour personnalisation
+   $danger: #fd5d93 !default; // EDIT pour personnalisation
+   $black: #222a42 !default; // EDIT pour personnalisation
+   ```
+
+3. Compilez SCSS en CSS :
+   ```bash
+   $ gulp # Traduction de SCSS en CSS
+   ```
+
+## Structure du Projet
+
+Voici un aperçu de la structure de votre projet :
 ```
-
-<br />
-
-> Set Up Flask Environment
-
-```bash
-$ export FLASK_APP=run.py
-$ export FLASK_ENV=development
-```
-
-<br />
-
-> Start the app
-
-```bash
-$ flask run
-// OR
-$ flask run --cert=adhoc # For HTTPS server
-```
-
-At this point, the app runs at `http://127.0.0.1:5000/`.
-
-<br />
-
-### 👉 Set Up for `Windows`
-
-> Install modules via `VENV` (windows)
-
-```
-$ virtualenv env
-$ .\env\Scripts\activate
-$ pip3 install -r requirements.txt
-```
-
-<br />
-
-> Set Up Flask Environment
-
-```bash
-$ # CMD
-$ set FLASK_APP=run.py
-$ set FLASK_ENV=development
-$
-$ # Powershell
-$ $env:FLASK_APP = ".\run.py"
-$ $env:FLASK_ENV = "development"
-```
-
-<br />
-
-> Start the app
-
-```bash
-$ flask run
-// OR
-$ flask run --cert=adhoc # For HTTPS server
-```
-
-At this point, the app runs at `http://127.0.0.1:5000/`.
-
-<br />
-
-## ✅ Recompile SCSS
-
-The SCSS/CSS files used to style the Ui are saved in the `apps/static/assets` directory.
-In order to update the Ui colors (primary, secondary) this procedure needs to be followed.
-
-```bash
-$ yarn # install modules
-$ # # edit variables
-$ vi apps/static/assets/scss/black-dashboard/custom/_variables.scss
-$ gulp # SCSS to CSS translation
-```
-
-The `_variables.scss` content defines the `primary` and `secondary` colors:
-
-```scss
-$default: #344675 !default; // EDIT for customization
-$primary: #e14eca !default; // EDIT for customization
-$secondary: #f4f5f7 !default; // EDIT for customization
-$success: #00f2c3 !default; // EDIT for customization
-$info: #1d8cf8 !default; // EDIT for customization
-$warning: #ff8d72 !default; // EDIT for customization
-$danger: #fd5d93 !default; // EDIT for customization
-$black: #222a42 !default; // EDIT for customization
-```
-
-<br />
-
-```bash
 < PROJECT ROOT >
    |
    |-- apps/
    |    |
-   |    |-- home/                           # A simple app that serve HTML files
-   |    |    |-- routes.py                  # Define app routes
+   |    |-- home/                           # App simple pour servir les fichiers HTML
+   |    |    |-- routes.py                  # Définit les routes de l'application
    |    |
-   |    |-- authentication/                 # Handles auth routes (login and register)
-   |    |    |-- routes.py                  # Define authentication routes
-   |    |    |-- models.py                  # Defines models
-   |    |    |-- forms.py                   # Define auth forms (login and register)
+   |    |-- authentication/                 # Gère les routes d'authentification (login et register)
+   |    |    |-- routes.py                  # Définit les routes d'authentification
+   |    |    |-- models.py                  # Définit les modèles
+   |    |    |-- forms.py                   # Définit les formulaires d'authentification (login et register)
    |    |
    |    |-- static/
-   |    |    |-- <css, JS, images>          # CSS files, Javascripts files
+   |    |    |-- <css, JS, images>          # Fichiers CSS, fichiers Javascript
    |    |
-   |    |-- templates/                      # Templates used to render pages
-   |    |    |-- includes/                  # HTML chunks and components
-   |    |    |    |-- navigation.html       # Top menu component
-   |    |    |    |-- sidebar.html          # Sidebar component
-   |    |    |    |-- footer.html           # App Footer
-   |    |    |    |-- scripts.html          # Scripts common to all pages
+   |    |-- templates/                      # Modèles utilisés pour rendre les pages
+   |    |    |-- includes/                  # Chunks et composants HTML
+   |    |    |    |-- navigation.html       # Composant de menu supérieur
+   |    |    |    |-- sidebar.html          # Composant de barre latérale
+   |    |    |    |-- footer.html           # Pied de page de l'application
+   |    |    |    |-- scripts.html          # Scripts communs à toutes les pages
    |    |    |
-   |    |    |-- layouts/                   # Master pages
-   |    |    |    |-- base-fullscreen.html  # Used by Authentication pages
-   |    |    |    |-- base.html             # Used by common pages
+   |    |    |-- layouts/                   # Pages maîtresses
+   |    |    |    |-- base-fullscreen.html  # Utilisé par les pages d'authentification
+   |    |    |    |-- base.html             # Utilisé par les pages courantes
    |    |    |
-   |    |    |-- accounts/                  # Authentication pages
-   |    |    |    |-- login.html            # Login page
-   |    |    |    |-- register.html         # Register page
+   |    |    |-- accounts/                  # Pages d'authentification
+   |    |    |    |-- login.html            # Page de connexion
+   |    |    |    |-- register.html         # Page d'inscription
    |    |    |
-   |    |    |-- home/                      # UI Kit Pages
-   |    |         |-- index.html            # Index page
-   |    |         |-- 404-page.html         # 404 page
-   |    |         |-- *.html                # All other pages
+   |    |    |-- home/                      # Pages de l'interface utilisateur
+   |    |         |-- index.html            # Page d'accueil
+   |    |         |-- 404-page.html         # Page 404
+   |    |         |-- *.html                # Toutes les autres pages
    |    |
-   |  config.py                             # Set up the app
-   |    __init__.py                         # Initialize the app
+   |  config.py                             # Configuration de l'application
+   |    __init__.py                         # Initialiser l'application
    |
-   |-- requirements.txt                     # App Dependencies
+   |-- requirements.txt                     # Dé
+
+pendances de l'application
    |
-   |-- .env                                 # Inject Configuration via Environment
-   |-- run.py                               # Start the app - WSGI gateway
+   |-- .env                                 # Configuration par injection via l'environnement
+   |-- run.py                               # Démarrer l'application - passerelle WSGI
    |
    |-- ************************************************************************
 ```
+
+## Documentation Complète
+
+Pour une documentation plus détaillée sur les routes, les modèles, les formulaires, etc., veuillez consulter les fichiers correspondants dans le répertoire `apps`.
+
+---
