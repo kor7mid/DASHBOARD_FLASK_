@@ -1,0 +1,86 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Liste des Utilisateurs {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card ">
+          <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+            <h4 class="card-title"> Liste des Utilisateurs</h4>
+            <a href="{{ url_for('authentication_blueprint.add_user') }}" class="btn btn-success">
+              <i class="fas fa-plus"></i> Ajouter
+            </a>
+          </div>
+          </div>
+        </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table tablesorter " id="">
+                <thead class=" text-primary text-center">
+                  <tr>
+                    <th>
+                      Identifiant
+                    </th>
+                    <th>
+                      Nom d'Utilisateur
+                    </th>
+                    <th>
+                      Email
+                    </th>
+                    <th class="text-center">
+                      Salary
+                    </th>
+                    <th class="text-center">
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="text-center">
+                  {% for user in users %}
+                  {% if user != current_user %}
+                  <tr>
+                    <td>{{ user.id }}</td> <!-- Affichez l'identifiant -->
+                    <td>{{ user.username }}</td> <!-- Affichez le nom d'utilisateur -->
+                    <td>{{ user.email }}</td> <!-- Affichez l'email -->
+                    <td>{{ user.salary }}</td> <!-- Affichez le salaire -->
+                    <td class="text-center">
+                      <!-- Bouton pour Ajouter avec icône -->
+                      <!-- <a href="{{ url_for('authentication_blueprint.add_user') }}" class="btn btn-success">
+                        <i class="fas fa-plus"></i>
+                      </a> -->
+
+                      <!-- Bouton pour Modifier avec icône -->
+                      <a href="{{ url_for('authentication_blueprint.edit_user', user_id=user.id) }}" class="btn  btn-md btn-primary">
+                        <i class="fas fa-edit"></i>
+                      </a>
+
+                      <!-- Bouton pour Supprimer avec icône -->
+                      <a href="{{ url_for('authentication_blueprint.delete_user', user_id=user.id) }}" class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  {% endif %}
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
